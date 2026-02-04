@@ -9,12 +9,7 @@ export const PATTERNS = {
         option2: 's("bd hh sd hh").bank("RolandTR909")',
         option3: 's("bd*2 [sd hh]*2").bank("RolandTR909")'
     },
-    harmony: {
-        option1: 'chord("Cm7").s("piano")',
-        option2: 'chord("Cm9").s("superpiano")',
-        option3: 'chord("Cm7").s("sawtooth").lpf(2000).delay(0.5)'
-    },
-    melody: {
+    leadArrangement: {
         option1: 'note("g4 f4 eb4 d4").s("piano")',
         option2: 'note("c5 g4").s("sine")',
         option3: 'note("eb5 d5 c5 bb4").s("square")'

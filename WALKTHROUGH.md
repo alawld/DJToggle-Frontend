@@ -7,7 +7,7 @@ The **DJToggle Frontend** is a React-based "DJ Dashboard" that allows an audienc
 -   **Premium Dark UI**: Glassmorphism effects, neon gradients, and responsive grid layout.
 -   **Audio Engine**: Integrated `@strudel/core` with a custom hook (`useStrudel`) that hot-swaps patterns based on LD flags.
 -   **Voting System**: Users can click on patterns to vote. Each vote sends a `vote` metric to LaunchDarkly with `{ track, option }` attributes.
--   **LaunchDarkly Integration**: Uses `LDProvider` to sync feature flags (`bass`, `drums`, `harmony`, `melody`) with the audio engine in real-time.
+-   **LaunchDarkly Integration**: Uses `LDProvider` to sync feature flags (`bass`, `drums`, `leadArrangement`) with the audio engine in real-time.
 
 ## Configuration
 
@@ -18,11 +18,25 @@ The **DJToggle Frontend** is a React-based "DJ Dashboard" that allows an audienc
     ```env
     VITE_LAUNCHDARKLY_CLIENT_ID=your-client-id-here
     ```
-2.  In LaunchDarkly, create 4 string flags: `bass`, `drums`, `harmony`, `melody`.
+2.  In LaunchDarkly, create 3 string flags: `bass`, `drums`, `leadArrangement`.
     -   Variations: `option1`, `option2`, `option3`.
 3.  Create a custom metric key: `vote`.
 
 ## Usage
+
+### Option A: Docker (Recommended)
+
+Run the app without installing Node.js:
+
+1.  Make sure your `.env` file is configured with `VITE_LAUNCHDARKLY_CLIENT_ID`.
+    *Note: The Docker build needs this variable at build time.*
+2.  Run with Docker Compose:
+    ```bash
+    docker-compose up --build
+    ```
+3.  Open [http://localhost:8081](http://localhost:8081).
+
+### Option B: Local Development
 
 1.  Start the dev server:
     ```bash

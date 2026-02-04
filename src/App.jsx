@@ -5,12 +5,12 @@ import { TrackColumn } from './components/TrackColumn';
 import { Controls } from './components/Controls';
 import { PATTERNS } from './audio/patterns';
 import { cn } from './lib/utils';
+import djAstronaut from './assets/DJToggle.png';
 
 const TRACKS = [
   { id: 'bass', title: 'Bass', options: [{ id: 'option1', name: 'Deep Pulse' }, { id: 'option2', name: 'Driving Saw' }, { id: 'option3', name: 'Funky Square' }] },
   { id: 'drums', title: 'Drums', options: [{ id: 'option1', name: 'Basic 4/4' }, { id: 'option2', name: 'Breakbeat' }, { id: 'option3', name: 'Double Time' }] },
-  { id: 'harmony', title: 'Harmony', options: [{ id: 'option1', name: 'Warm Pad' }, { id: 'option2', name: 'Stabs' }, { id: 'option3', name: 'Arpeggio' }] },
-  { id: 'melody', title: 'Melody', options: [{ id: 'option1', name: 'Main Theme' }, { id: 'option2', name: 'Counterpoint' }, { id: 'option3', name: 'Minimal' }] },
+  { id: 'leadArrangement', title: 'Melody', options: [{ id: 'option1', name: 'Main Theme' }, { id: 'option2', name: 'Counterpoint' }, { id: 'option3', name: 'Minimal' }] },
 ];
 
 function App() {
@@ -27,15 +27,13 @@ function App() {
       // Default to option1 if flag is missing/invalid
       const bass = PATTERNS.bass[flags.bass] || PATTERNS.bass.option1;
       const drums = PATTERNS.drums[flags.drums] || PATTERNS.drums.option1;
-      const harmony = PATTERNS.harmony[flags.harmony] || PATTERNS.harmony.option1;
-      const melody = PATTERNS.melody[flags.melody] || PATTERNS.melody.option1;
+      const leadArrangement = PATTERNS.leadArrangement[flags.leadArrangement] || PATTERNS.leadArrangement.option1;
 
       // Stack the patterns
       const combinedPattern = `stack(
         ${bass},
         ${drums},
-        ${harmony},
-        ${melody}
+        ${leadArrangement}
       )`;
 
       updatePattern(combinedPattern);
@@ -64,17 +62,27 @@ function App() {
       <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-secondary/20 rounded-full blur-[100px] animate-pulse delay-1000" />
 
       {/* Header */}
-      <div className="z-10 text-center mb-12">
+      <div className="z-10 text-center mb-12 flex flex-col items-center">
         <h1 className="text-6xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-accent drop-shadow-2xl mb-4">
           DJ TOGGLE
         </h1>
-        <p className="text-xl text-white/50 font-light tracking-widest uppercase">
+        <p className="text-xl text-white/50 font-light tracking-widest uppercase mb-8">
           Live Audience Mixing
         </p>
+
+        {/* DJ Astronaut Image */}
+        <div className="relative w-96 h-96 mb-8">
+          <div className="absolute inset-0 bg-accent/20 rounded-full blur-3xl animate-pulse" />
+          <img
+            src={djAstronaut}
+            alt="DJ Astronaut"
+            className="relative z-10 w-full h-full object-contain drop-shadow-[0_0_15px_rgba(34,211,238,0.5)]"
+          />
+        </div>
       </div>
 
       {/* Main Grid */}
-      <div className="z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-7xl mb-12">
+      <div className="z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-7xl mb-12">
         {TRACKS.map(track => (
           <TrackColumn
             key={track.id}
