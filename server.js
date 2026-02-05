@@ -44,7 +44,8 @@ app.get('/api/config', async (req, res) => {
         );
 
         // Filter and transform the data
-        const relevantFlags = ['bass', 'drums', 'leadArrangement'];
+        const relevantFlags = ['bassArrangement', 'drumArrangement', 'leadArrangement'];
+
         const tracks = {};
 
         response.data.items.forEach(flag => {

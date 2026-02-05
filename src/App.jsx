@@ -32,10 +32,10 @@ function App() {
         const newTracks = [];
 
         // Define display titles mapping
-        const titles = { bass: 'Bass', drums: 'Drums', leadArrangement: 'Melody' };
+        const titles = { bassArrangement: 'Bass', drumArrangement: 'Drums', leadArrangement: 'Melody' };
 
         // Process known keys in specific order or strictly from return
-        ['bass', 'drums', 'leadArrangement'].forEach(key => {
+        ['bassArrangement', 'drumArrangement', 'leadArrangement'].forEach(key => {
           if (data[key]) {
             newTracks.push({
               id: key,
@@ -55,10 +55,10 @@ function App() {
   useEffect(() => {
     // Construct the combined pattern based on active flags
     try {
-      // Default to option1 if flag is missing/invalid
-      const bass = PATTERNS.bass[flags.bass] || PATTERNS.bass.option1;
-      const drums = PATTERNS.drums[flags.drums] || PATTERNS.drums.option1;
-      const leadArrangement = PATTERNS.leadArrangement[flags.leadArrangement] || PATTERNS.leadArrangement.option1;
+      // Default to 'original' if flag is missing/invalid
+      const bass = PATTERNS.bassArrangement[flags.bassArrangement] || PATTERNS.bassArrangement.original;
+      const drums = PATTERNS.drumArrangement[flags.drumArrangement] || PATTERNS.drumArrangement.original;
+      const leadArrangement = PATTERNS.leadArrangement[flags.leadArrangement] || PATTERNS.leadArrangement.original;
 
       // Stack the patterns
       const combinedPattern = `stack(

@@ -1,17 +1,24 @@
 export const PATTERNS = {
-    bass: {
-        option1: 'note("c3 e3 g3 b3").s("triangle").lpf(1000)',
-        option2: 'note("c2 c3").s("sawtooth").lpf(500)',
-        option3: 'note("c2*2").s("square").lpf(800)'
+    bassArrangement: {
+        original: 'note("c2 [e2 g2] c3 [e2 g2]").s("gm_synth_bass_1").lpf(800)',
+        trance: 'note("c2!4").s("sawtooth").lpf(sine.range(400, 2000).slow(4)).gain(0.6)',
+        tuba: 'note("c2 c3 c2 c3").s("tuba")',
+        strings: 'note("c2 e2 g2 c3").s("gm_string_ensemble_1").lpf(600)',
+        silence: '""'
     },
-    drums: {
-        option1: 's("bd sd").bank("RolandTR909")',
-        option2: 's("bd hh sd hh").bank("RolandTR909")',
-        option3: 's("bd*2 [sd hh]*2").bank("RolandTR909")'
+    drumArrangement: {
+        original: 's("bd ~ cp ~").bank("RolandTR909")',
+        syncopated: 's("~ bd [~ cp] bd").bank("RolandTR909")',
+        fourOnTheFloor: 's("bd!4").bank("RolandTR909")',
+        casio: 's("bd ~ sd ~").bank("CasioRZ1")',
+        basicTick: 's("~ ~ tick ~")'
     },
     leadArrangement: {
-        option1: 'note("g4 f4 eb4 d4").s("piano")',
-        option2: 'note("c5 g4").s("sine")',
-        option3: 'note("eb5 d5 c5 bb4").s("square")'
+        techno: 'note("c5 ~ eb5 ~").s("sawtooth").lpf(2000).gain(0.5)',
+        epiano: 'note("g4 c5 e5 g5").s("RhodesElectricPiano")',
+        organ: 'note("c4 e4 g4 c5").s("gm_church_organ").gain(0.4)',
+        original: 'note("~ [g4 c5] ~ [eb5 g5]").s("sawtooth").lpf(sine.range(800, 3000).slow(8)).ad(0.1, 0.3)',
+        silence: '""',
+        banjo: 'note("c4 e4 g4 c5").s("banjo")'
     }
 };
