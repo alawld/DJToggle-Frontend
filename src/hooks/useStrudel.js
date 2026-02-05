@@ -1,12 +1,19 @@
 import { useEffect, useRef, useState } from 'react';
 import { repl } from '@strudel/core';
-import { initAudioOnFirstClick } from '@strudel/webaudio';
+import { initAudioOnFirstClick, doughsamples } from '@strudel/webaudio';
 
 export function useStrudel() {
     const [isPlaying, setIsPlaying] = useState(false);
     const schedulerRef = useRef(null);
 
     useEffect(() => {
+        // Configure local samples if URL is provided
+        const samplesUrl = import.meta.env.VITE_STRUDEL_SAMPLES_URL;
+        if (samplesUrl) {
+            console.log("Using custom Strudel samples URL:", samplesUrl);
+            doughsamples(samplesUrl);
+        }
+
         // Initialize Strudel REPL
         const { scheduler } = repl({
             defaultOutput: initAudioOnFirstClick(),
