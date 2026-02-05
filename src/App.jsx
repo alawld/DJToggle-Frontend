@@ -34,13 +34,18 @@ function App() {
         // Define display titles mapping
         const titles = { bassArrangement: 'Bass', drumArrangement: 'Drums', leadArrangement: 'Melody' };
 
+        const isSilenceOption = (option) => {
+          const label = String(option?.name || option?.value || '').trim().toLowerCase();
+          return label === 'silence';
+        };
+
         // Process known keys in specific order or strictly from return
         ['bassArrangement', 'drumArrangement', 'leadArrangement'].forEach(key => {
           if (data[key]) {
             newTracks.push({
               id: key,
               title: titles[key] || key,
-              options: data[key].options
+              options: (data[key].options || []).filter(option => !isSilenceOption(option))
             });
           }
         });
@@ -121,6 +126,7 @@ function App() {
             trackId={track.id}
             options={track.options}
             currentOption={flags[track.id] || 'option1'} // Use flag value as source of truth for "Winning"
+            selectedOption={userVotes[track.id]}
             onVote={handleVote}
           />
         ))}

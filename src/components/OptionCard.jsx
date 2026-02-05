@@ -14,7 +14,7 @@ export function OptionCard({ label, isSelected, isWinning, onVote, votes }) {
                 isSelected
                     ? "border-primary/50 bg-primary/10 shadow-[0_0_15px_rgba(109,40,217,0.3)]"
                     : "border-white/10 bg-white/5 hover:bg-white/10 hover:border-white/20",
-                isWinning && "ring-2 ring-accent ring-offset-2 ring-offset-black"
+                isSelected && "ring-2 ring-accent ring-offset-2 ring-offset-black"
             )}
         >
             <div className="flex justify-between items-center z-10 relative">

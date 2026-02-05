@@ -54,7 +54,8 @@ app.get('/api/config', async (req, res) => {
                     name: flag.name,
                     options: flag.variations.map((v, i) => ({
                         id: `option${i + 1}`, // Mapping index to option ID matching our pattern logic
-                        name: v.name || v.value // Use variation name or value
+                        name: v.name || v.value, // Use variation name or value for display
+                        value: v.value
                     }))
                 };
             }
